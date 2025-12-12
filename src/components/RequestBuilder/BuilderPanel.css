@@ -1,0 +1,74 @@
+.builder-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    /* Increased gap */
+}
+
+.builder-tabs {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.tabs-header {
+    display: flex;
+    gap: 0.5rem;
+    border-bottom: none;
+    /* Removed border */
+    margin-bottom: 0;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    /* Space for scrollbar if needed */
+    /* Remove default scrollbar */
+    /* Actually stick to custom scrollbar */
+}
+
+.tab-button {
+    background: var(--bg-element);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s;
+    border-radius: 9999px;
+    /* Pill shape */
+    white-space: nowrap;
+}
+
+.tab-button:hover {
+    color: var(--text-primary);
+    border-color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.tab-button.active {
+    color: white;
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
+    box-shadow: 0 2px 10px var(--accent-glow);
+}
+
+.tab-button.active::after {
+    content: none;
+    /* Remove underline */
+}
+
+.tab-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--success);
+    border-radius: 50%;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+.tab-content {
+    animation: fadeIn 0.3s ease-out;
+    padding: 0.5rem 0;
+    /* Add some vertical breathing room */
+}

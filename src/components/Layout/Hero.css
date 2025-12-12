@@ -1,0 +1,113 @@
+.hero-section {
+    position: relative;
+    height: 90vh;
+    /* Taller hero */
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    perspective: 1000px;
+}
+
+.hero-bg-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    filter: blur(80px);
+    z-index: -1;
+    opacity: 0.5;
+    animation: pulseGlow 5s infinite alternate;
+}
+
+@keyframes pulseGlow {
+    from {
+        opacity: 0.3;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+
+    to {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+.hero-content {
+    z-index: 10;
+    max-width: 800px;
+    padding: 2rem;
+    transition: transform 0.1s ease-out;
+    /* Smooth tilt */
+}
+
+.badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 99px;
+    font-size: 0.8rem;
+    color: var(--accent-primary);
+    margin-bottom: 2rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.2);
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin: 0 0 1.5rem 0;
+    letter-spacing: -0.03em;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin: 0 0 2rem 0;
+    font-weight: 400;
+    padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+    .hero-title {
+        font-size: 5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.5rem;
+        margin: 0 0 3rem 0;
+    }
+}
+
+.typing-text {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.cursor {
+    width: 2px;
+    height: 1.2em;
+    background-color: var(--accent-primary);
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}

@@ -1,0 +1,303 @@
+:root {
+  /* Neon / Cyber Palette */
+  --bg-app: #050511;
+  /* Deepest Void */
+  --bg-panel: #0a0a1f;
+  --bg-element: #13132b;
+
+  --text-primary: #f0f4f8;
+  --text-secondary: #94a3b8;
+  --text-code: #e2e8f0;
+
+  /* Electric Indigo to Neon Purple */
+  --accent-primary: #6366f1;
+  --accent-secondary: #d946ef;
+  /* Fuchsia */
+  --accent-gradient: linear-gradient(135deg, #6366f1 0%, #d946ef 100%);
+  --accent-glow: rgba(99, 102, 241, 0.6);
+  --accent-glow-secondary: rgba(217, 70, 239, 0.5);
+
+  --success: #00ff94;
+  /* Neon Green */
+  --error: #ff4757;
+  /* Neon Red */
+  --border: rgba(255, 255, 255, 0.08);
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+  --shadow-neon: 0 0 20px rgba(99, 102, 241, 0.3);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  line-height: 1.5;
+  /* Subtle grain/noise overlay could go here but let's keep it CSS only for now */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.p-6 {
+  padding: 1.5rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+
+a {
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: #818cf8;
+}
+
+code,
+pre {
+  font-family: var(--font-mono);
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+/* Scrollbar - Slim & Dark & Smooth */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 99px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  transition: background 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid transparent;
+  background-clip: padding-box;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+
+/* Utilities */
+.text-gradient {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
+}
+
+.neon-text {
+  color: #fff;
+  text-shadow: 0 0 5px var(--accent-primary), 0 0 10px var(--accent-primary), 0 0 20px var(--accent-primary);
+}
+
+.glow-border {
+  position: relative;
+}
+
+.glow-border::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: var(--accent-gradient);
+  z-index: -1;
+  opacity: 0.3;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.glow-border:focus-within::after,
+.glow-border:hover::after {
+  opacity: 0.8;
+  filter: blur(8px);
+}
+
+/* Deep Glass Panel */
+.glass-panel {
+  background: rgba(13, 13, 31, 0.6);
+  /* Darker base */
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  /* Very subtle top border */
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  box-shadow:
+    0 4px 30px rgba(0, 0, 0, 0.5),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+  /* Inner bevel */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-panel:hover {
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.6),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* Global Input Styles Enhancement */
+input[type="text"],
+input[type="password"],
+input[type="number"],
+textarea,
+select {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(0, 0, 0, 0.2) !important;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-primary);
+  /* Enforce darkness & text color */
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  background: rgba(0, 0, 0, 0.3) !important;
+  box-shadow: 0 0 0 1px var(--accent-primary), 0 0 15px -3px var(--accent-glow);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.5;
+}
+
+/* Animation utilities */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* --- BUTTON SYSTEM --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  border: none;
+  background: transparent;
+  white-space: nowrap;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+/* Primary: Gradient, Shadow, Premium */
+.btn-primary {
+  background: var(--accent-gradient);
+  color: white;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  border: 1px solid transparent;
+  /* To match sizing of bordered btns */
+}
+
+.btn-primary:hover {
+  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.5);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0) scale(0.97);
+}
+
+/* Secondary: Glass, Bordered, Subtle */
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--text-secondary);
+  color: white;
+}
+
+/* Ghost: Text only, hover bg */
+.btn-ghost {
+  color: var(--text-secondary);
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+}
+
+/* Icon Button: Square/Circle */
+.btn-icon {
+  padding: 0.5rem;
+  border-radius: 6px;
+  color: var(--text-secondary);
+  transition: all 0.2s;
+}
+
+.btn-icon:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+}
+
+.btn-icon.danger:hover {
+  background: rgba(249, 115, 115, 0.15);
+  color: var(--error);
+}
+
+.btn-sm {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
+  border-radius: 6px;
+}

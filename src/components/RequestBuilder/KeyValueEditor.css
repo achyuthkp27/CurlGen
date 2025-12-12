@@ -1,0 +1,64 @@
+.kv-editor {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.kv-row {
+    display: grid;
+    grid-template-columns: 32px 1fr 1fr 1fr 32px;
+    gap: 0.75rem;
+    /* Increased gap */
+    align-items: center;
+    padding: 0.25rem 0.5rem;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+
+.kv-row:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.kv-row.hide-desc {
+    grid-template-columns: 32px 1fr 1fr 32px;
+}
+
+.kv-header {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    padding: 0 0.5rem;
+    /* Match row padding */
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.kv-input {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.6rem 0.8rem;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    width: 100%;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.kv-input:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 0 1px var(--accent-primary), 0 0 15px -3px var(--accent-glow);
+}
+
+.kv-checkbox {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent-primary);
+    cursor: pointer;
+    border-radius: 4px;
+    /* Browser native accent-color handles neon glow mostly */
+}
+
+/* kv-delete-btn and kv-add-btn removed in favor of global .btn classes */
